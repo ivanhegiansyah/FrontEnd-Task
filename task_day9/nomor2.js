@@ -1,17 +1,18 @@
 // //nomor 2
+var _ = require('lodash');
 
 function hitungLembah(input) {
-    let step = 0
+    let tinggi = 0
     let lembah = 0
     for (let i = 0; i < input.length; i++) {
-        if (input[i] === "U") {
-            step++
-            if (step === 0) {
+        if (_.isEqual(input.charAt(i), "U")) {
+            tinggi++
+            if (tinggi === 0) {
                 lembah++
             }
         }
         else {
-            step--
+            tinggi--
         }
     }
     return lembah
