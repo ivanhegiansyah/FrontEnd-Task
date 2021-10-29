@@ -1,5 +1,5 @@
 //nomor 1
-var _ = require('lodash');
+var _ = require("lodash");
 
 const anggota_kelas = ["budi", "sita", "ayu", "rena", "omen"];
 let mengumpulkan_tugas = ["rena", "omen"];
