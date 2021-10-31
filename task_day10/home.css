@@ -1,0 +1,36 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-position: 0 -100px;
+    background-size: cover;
+}
+
+.nav-link {
+    font-size: 13px;
+}
+
+.nav-link:hover {
+    color: #F47522 !important;
+    font-weight: bold;
+}
+.active {
+    color: #F47522 !important;
+    font-weight: 700;
+}
+
+.content {
+    color: #19345E;
+}
+.isi {
+    min-height: 600px;
+    min-width: 300px;
+}
+
+.btn-orange {
+    font-size: 16px;
+    color: white; 
+    background-color: #F47522; 
+    border-color: #F47522
+}
