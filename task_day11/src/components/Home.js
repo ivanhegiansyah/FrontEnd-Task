@@ -68,8 +68,7 @@ function Home() {
             <h1 className="fw-bold display-1">Anne Sullivan</h1>
             <h2>I build things for the web</h2>
             <a
-              className="btn btn-primary rounded-pill"
-              id="btn-orange"
+              className="btn btn-primary rounded-pill btn-orange"
               href="contact_us.html"
             >
               Get In Touch
