@@ -1,0 +1,27 @@
+.completed {
+  color: gray;
+  font-style: italic;
+  text-decoration: line-through;
+}
+
+.row {
+  border-bottom: 2px solid rgb(201, 201, 201);
+}
+
+.content {
+  height: 50px;
+  width: 50px;
+  text-align: end;
+}
+
+.button {
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.button:hover {
+  color: black;
+}
