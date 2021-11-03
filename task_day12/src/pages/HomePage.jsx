@@ -1,7 +1,7 @@
 // import Head from "./components/Head";
 import { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
-import Title from "./Title";
+import Title from "./components/Title";
 import ListContent from "./components/ListContent";
 import InputContent from "./components/InputContent";
 
