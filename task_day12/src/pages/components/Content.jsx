@@ -1,31 +1,29 @@
-import { Component } from "react";
+import { useState } from "react";
 import styles from "./Content.module.css";
-class Content extends Component {
-  state = {
+function Content(props) {
+  const { item, editContent, deleteContent, checkContent, uncheckContent } =
+    props;
+  const [edit, setEdit] = useState({
     title: "",
     completed: false,
     editing: true,
+  });
+
+  const onChange = (e) => {
+    setEdit({ ...edit, [e.target.name]: e.target.value });
   };
 
-  onChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  handleEdit = () => {
-    // e.preventDefault();
-
-    const isEmpty = this.state.title === "";
+  const handleEdit = () => {
+    const isEmpty = edit.title === "";
     if (!isEmpty) {
       const newData = {
-        title: this.state.title,
-        completed: this.state.completed,
+        title: edit.title,
+        completed: edit.completed,
         editing: false,
       };
 
-      this.props.editContent(this.props.item.id, newData);
-      this.setState({
+      editContent(item.id, newData);
+      setEdit({
         title: "",
         completed: false,
         editing: true,
@@ -35,80 +33,69 @@ class Content extends Component {
     }
   };
 
-  handleBukaEdit = () => {
-    this.setState({
+  const handleBukaEdit = () => {
+    setEdit({
       editing: false,
     });
   };
 
-  handleTutupEdit = () => {
-    this.setState({
-      editing: true,
-    });
-  };
+  const viewMode = {};
+  const editMode = {};
 
-  render() {
-    const viewMode = {};
-    const editMode = {};
+  if (edit.editing) {
+    viewMode.display = "none";
+  } else {
+    editMode.display = "none";
+  }
 
-    if (this.state.editing) {
-      viewMode.display = "none";
-    } else {
-      editMode.display = "none";
-    }
-
-    return (
-      <tr className={styles.row}>
-        <td>
+  return (
+    <tr className={styles.row}>
+      <td>
+        <input
+          style={{ cursor: "pointer" }}
+          defaultChecked={item.completed ? true : false}
+          type="checkbox"
+          onClick={
+            item.completed
+              ? () => uncheckContent(item.id)
+              : () => checkContent(item.id)
+          }
+        />
+      </td>
+      <td
+        style={{ width: "260px" }}
+        className={item.completed ? styles.completed : ""}
+      >
+        {item.title}
+      </td>
+      <td>
+        <div style={viewMode}>
           <input
-            style={{ cursor: "pointer" }}
-            defaultChecked={this.props.item.completed ? true : false}
-            type="checkbox"
-            onClick={
-              this.props.item.completed
-                ? () => this.props.uncheckContent(this.props.item.id)
-                : () => this.props.checkContent(this.props.item.id)
-            }
+            type="text"
+            placeholder="Edit todo..."
+            name="title"
+            value={edit.title}
+            onChange={onChange}
           />
-        </td>
-        <td
-          style={{ width: "260px" }}
-          className={this.props.item.completed ? styles.completed : ""}
-        >
-          {this.props.item.title}
-        </td>
-        <td>
-          <div style={viewMode}>
-            <input
-              type="text"
-              placeholder="Edit todo..."
-              name="title"
-              value={this.state.title}
-              onChange={this.onChange}
-            />
-            <button onClick={this.handleEdit} className={styles.btn2}>
-              Edit
-            </button>
-          </div>
-          <button
-            onClick={this.handleBukaEdit}
-            style={editMode}
-            className={styles.btn2}
-          >
+          <button onClick={handleEdit} className={styles.btn2}>
             Edit
           </button>
-        </td>
-        <td className={styles.content}>
-          <button
-            className={styles.btn1}
-            onClick={() => this.props.deleteContent(this.props.item.id)}
-          >
-            Delete
-          </button>
-        </td>
-      </tr>
-    );
-  }
+        </div>
+        <button
+          onClick={handleBukaEdit}
+          style={editMode}
+          className={styles.btn2}
+        >
+          Edit
+        </button>
+      </td>
+      <td className={styles.content}>
+        <button className={styles.btn1} onClick={() => deleteContent(item.id)}>
+          Delete
+        </button>
+      </td>
+    </tr>
+  );
 }
 
 export default Content;

@@ -1,29 +1,28 @@
-import { Component } from "react";
+import { useState } from "react";
 import styles from "./InputContent.module.css";
 
-class InputContent extends Component {
-  state = {
+function InputContent(props) {
+  const { addContent } = props;
+  const [input, setInput] = useState({
     title: "",
     completed: false,
     editing: true,
+  });
+
+  const onChange = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  onChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const isEmpty = this.state.title === "";
+    const isEmpty = input.title === "";
     if (!isEmpty) {
       const newData = {
-        title: this.state.title,
-        completed: this.state.completed,
+        title: input.title,
+        completed: input.completed,
       };
-      this.props.addContent(newData);
-      this.setState({
+      addContent(newData);
+      setInput({
         title: "",
         completed: false,
       });
@@ -32,25 +31,23 @@ class InputContent extends Component {
     }
   };
 
-  render() {
-    return (
-      <>
-        <div className={styles.container}>
-          <input
-            type="text"
-            placeholder="Add todo..."
-            name="title"
-            className={styles.input}
-            value={this.state.title}
-            onChange={this.onChange}
-          />
-          <button onClick={this.handleSubmit} className={styles.button}>
-            Submit
-          </button>
-        </div>
-      </>
-    );
-  }
+  return (
+    <>
+      <div className={styles.container}>
+        <input
+          type="text"
+          placeholder="Add todo..."
+          name="title"
+          className={styles.input}
+          value={input.title}
+          onChange={onChange}
+        />
+        <button onClick={handleSubmit} className={styles.button}>
+          Submit
+        </button>
+      </div>
+    </>
+  );
 }
 
 export default InputContent;
