@@ -2,7 +2,8 @@ import Content from "./Content";
 import styles from "./ListContent.module.css";
 
 const ListContent = (props) => {
-  const { data, deleteContent, checkContent, uncheckContent } = props;
+  const { data, deleteContent, editContent, checkContent, uncheckContent } =
+    props;
 
   return (
     <div className={styles.container}>
@@ -13,6 +14,7 @@ const ListContent = (props) => {
               key={content.id}
               item={content}
               deleteContent={deleteContent}
+              editContent={editContent}
               checkContent={checkContent}
               uncheckContent={uncheckContent}
             />

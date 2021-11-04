@@ -14,7 +14,7 @@
   text-align: end;
 }
 
-.button {
+.btn1 {
   background-color: red;
   color: white;
   cursor: pointer;
@@ -22,6 +22,18 @@
   border-radius: 4px;
 }
 
-.button:hover {
+.btn2 {
+  background-color: green;
+  color: white;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.btn1:hover {
+  color: black;
+}
+
+.btn2:hover {
   color: black;
 }

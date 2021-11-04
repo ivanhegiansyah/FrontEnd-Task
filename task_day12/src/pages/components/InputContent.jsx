@@ -5,6 +5,7 @@ class InputContent extends Component {
   state = {
     title: "",
     completed: false,
+    editing: true,
   };
 
   onChange = (e) => {
@@ -33,19 +34,21 @@ class InputContent extends Component {
 
   render() {
     return (
-      <div className={styles.container}>
-        <input
-          type="text"
-          placeholder="Add todo..."
-          name="title"
-          className={styles.input}
-          value={this.state.title}
-          onChange={this.onChange}
-        />
-        <button onClick={this.handleSubmit} className={styles.button}>
-          Submit
-        </button>
-      </div>
+      <>
+        <div className={styles.container}>
+          <input
+            type="text"
+            placeholder="Add todo..."
+            name="title"
+            className={styles.input}
+            value={this.state.title}
+            onChange={this.onChange}
+          />
+          <button onClick={this.handleSubmit} className={styles.button}>
+            Submit
+          </button>
+        </div>
+      </>
     );
   }
 }

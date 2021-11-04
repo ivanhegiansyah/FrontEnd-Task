@@ -28,11 +28,13 @@ class HomePage extends Component {
           id: 1,
           title: "Mengerjakan Exercise",
           completed: true,
+          editing: true,
         },
         {
           id: 2,
           title: "Mengerjakan Assignment",
           completed: false,
+          editing: true,
         },
       ],
     };
@@ -43,9 +45,19 @@ class HomePage extends Component {
     this.setState({ data: newListContent });
   };
 
-  addContent = (newTodo) => {
-    const content = { id: uuidv4(), ...newTodo };
+  addContent = (newContent) => {
+    const content = { id: uuidv4(), ...newContent };
     this.setState({ data: [...this.state.data, content] });
+  };
+
+  editContent = (id, newContent) => {
+    const contents = this.state.data.map((content) => {
+      if (content.id === id) {
+        content.title = newContent.title;
+      }
+      return content;
+    });
+    this.setState({ data: contents });
   };
 
   checkContent = (id) => {
@@ -77,6 +89,7 @@ class HomePage extends Component {
         <ListContent
           data={this.state.data}
           deleteContent={this.deleteContent}
+          editContent={this.editContent}
           checkContent={this.checkContent}
           uncheckContent={this.uncheckContent}
         />
