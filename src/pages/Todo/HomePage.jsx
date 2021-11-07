@@ -1,9 +1,10 @@
 // import Head from "./components/Head";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import Title from "./components/Title";
-import ListContent from "./components/ListContent";
-import InputContent from "./components/InputContent";
+import Title from "./Title";
+import ListContent from "./ListContent";
+import InputContent from "./InputContent";
+import Navbar from "./Navbar";
 
 // export default function HomePage({ data }) {
 //   return (
@@ -80,6 +81,7 @@ function HomePage() {
   return (
     <>
       {/* <Head /> */}
+      <Navbar />
       <Title />
       <InputContent addContent={addContent} />
       <ListContent
