@@ -1,0 +1,13 @@
+label {
+  padding: 5px;
+}
+
+.input {
+  width: 95vw;
+  padding: 5px;
+}
+
+.errorMessage {
+  color: red;
+  margin-bottom: 15px;
+}

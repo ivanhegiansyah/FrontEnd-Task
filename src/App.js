@@ -2,6 +2,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import HomePage from "./pages/Todo/HomePage";
 import AboutPage from "./pages/About/AboutPage";
 import ErrorPage from "./pages/Error/ErrorPage";
+import FormPage from "./pages/Form/FormPage";
 // import { data } from "./data";
 function App() {
   const contentApp =
@@ -12,8 +13,6 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={HomePage} />
-
-        {/* <Route path="/about" component={<About tiitle="page" />} /> */}
         <Route path="/about" exact>
           <AboutPage title="page" />
         </Route>
@@ -23,6 +22,7 @@ function App() {
         <Route path="/about/about-author" exact>
           <AboutPage title="Author" content={contentAuthor} />
         </Route>
+        <Route path="/form" exact component={FormPage} />
         <Route path="*" component={ErrorPage} />
       </Switch>
     </BrowserRouter>
