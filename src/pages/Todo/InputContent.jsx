@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addContent } from "../../store/todoSlice";
 import styles from "./InputContent.module.css";
 
 function InputContent(props) {
-  const { addContent } = props;
+  const dispatch = useDispatch();
   const [input, setInput] = useState({
     title: "",
     completed: false,
@@ -21,7 +23,7 @@ function InputContent(props) {
         title: input.title,
         completed: input.completed,
       };
-      addContent(newData);
+      dispatch(addContent(newData));
       setInput({
         title: "",
         completed: false,

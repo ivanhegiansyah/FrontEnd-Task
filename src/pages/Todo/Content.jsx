@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { editContent } from "../../store/todoSlice";
 import styles from "./Content.module.css";
 function Content(props) {
-  const { item, editContent, deleteContent, checkContent, uncheckContent } =
-    props;
+  const dispatch = useDispatch();
+  const { item, deleteContent, checkContent } = props;
   const [edit, setEdit] = useState({
+    id: 0,
     title: "",
     completed: false,
     editing: true,
@@ -15,15 +18,17 @@ function Content(props) {
 
   const handleEdit = () => {
     const isEmpty = edit.title === "";
+
     if (!isEmpty) {
       const newData = {
+        id: item.id,
         title: edit.title,
         completed: edit.completed,
         editing: false,
       };
-
-      editContent(item.id, newData);
+      dispatch(editContent(newData));
       setEdit({
+        id: 0,
         title: "",
         completed: false,
         editing: true,
@@ -55,11 +60,7 @@ function Content(props) {
           style={{ cursor: "pointer" }}
           defaultChecked={item.completed ? true : false}
           type="checkbox"
-          onClick={
-            item.completed
-              ? () => uncheckContent(item.id)
-              : () => checkContent(item.id)
-          }
+          onClick={() => checkContent(item.id)}
         />
       </td>
       <td

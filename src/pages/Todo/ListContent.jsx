@@ -1,22 +1,26 @@
 import Content from "./Content";
 import styles from "./ListContent.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteContent, checkContent } from "../../store/todoSlice";
 
 const ListContent = (props) => {
-  const { data, deleteContent, editContent, checkContent, uncheckContent } =
-    props;
+  const todos = useSelector((state) => state.todo.todos);
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.container}>
       <table className={styles.table}>
         <tbody>
-          {data.map((content) => (
+          {todos.map((content) => (
             <Content
               key={content.id}
               item={content}
-              deleteContent={deleteContent}
-              editContent={editContent}
-              checkContent={checkContent}
-              uncheckContent={uncheckContent}
+              deleteContent={() => {
+                dispatch(deleteContent(content.id));
+              }}
+              checkContent={() => {
+                dispatch(checkContent(content.id));
+              }}
             />
           ))}
         </tbody>
