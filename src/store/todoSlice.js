@@ -37,7 +37,6 @@ export const todoSlice = createSlice({
       console.log(action.payload.id);
       state.todos = state.todos.map((content) => {
         if (content.id === action.payload.id) {
-          content.title = action.payload.title;
           return { ...content, title: action.payload.title };
         } else {
           return content;
