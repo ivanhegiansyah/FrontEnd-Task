@@ -37,6 +37,7 @@ describe("FormPage", () => {
       screen.getByText("Nama Lengkap Harus Berupa Huruf")
     ).toBeInTheDocument();
     expect(screen.getByText("Email Tidak Sesuai")).toBeInTheDocument();
+    expect(screen.getByText("No Handphone Tidak Sesuai")).toBeInTheDocument();
     expect(screen.getByLabelText(/Nama/)).toHaveValue("Ivan01");
     expect(screen.getByLabelText(/Email/)).toHaveValue("Ivan Hegiansyah");
     expect(screen.getByLabelText(/No Handphone/)).toHaveValue(123);
