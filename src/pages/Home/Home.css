@@ -1,0 +1,89 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+.nav-link {
+  font-size: 13px;
+}
+
+.nav-link:hover {
+  color: #f47522 !important;
+  font-weight: bold;
+}
+.active {
+  color: #f47522 !important;
+  font-weight: 700;
+}
+
+.content {
+  color: #19345e;
+}
+.isi {
+  background-image: url("../../img/bg-img.png");
+  background-position: 0 -100px;
+  background-size: cover;
+  min-height: 600px;
+  min-width: 300px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.left-bg {
+  background: url("../../img/charles-rRWiVQzLm7k-unsplash.jpg");
+  width: 64vh;
+  height: 42vh;
+  padding: 0;
+  background-size: cover;
+}
+
+.logo {
+  background: url("../../img/logo-ALTA-v2@2x.png");
+  background-size: cover;
+  width: 40vh;
+  height: 20vh;
+  background-size: cover;
+  position: absolute;
+  top: 12vw;
+  left: 12vw;
+  padding: 0;
+}
+
+.overlay {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #19345ea6;
+}
+
+@media (min-width: 992px) {
+  .left-bg {
+    background: url("../../img/charles-rRWiVQzLm7k-unsplash.jpg");
+    width: 68vh;
+    height: 100vh;
+    padding: 0;
+    background-size: cover;
+  }
+
+  .logo {
+    background: url("../../img/logo-ALTA-v2.png");
+    width: 40vh;
+    height: 20vh;
+    background-size: cover;
+    position: absolute;
+    top: 20vw;
+    left: 8vw;
+    padding: 0;
+  }
+}
+
+.btn-orange {
+  background-color: #f47522 !important;
+  color: white !important;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 28px;
+  border-color: #f47522;
+}
